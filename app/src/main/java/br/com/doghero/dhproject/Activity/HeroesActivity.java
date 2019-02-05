@@ -13,55 +13,44 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.doghero.dhproject.Adapter.HeroesAdapter;
+import br.com.doghero.dhproject.Adapter.HeroesFavAdapter;
 import br.com.doghero.dhproject.MyHeroes;
 import br.com.doghero.dhproject.Object.Hero;
+import br.com.doghero.dhproject.Object.JsonReaderHero;
 import br.com.doghero.dhproject.R;
 import br.com.doghero.dhproject.api.ApiAnswer;
 
 public class HeroesActivity extends AppCompatActivity {
 
+    /*
+        Elementos para a listagem de Heróis com quem hospedei
+     */
+
     private ListView listViewHeroes;
+    private HeroesAdapter adapterHeroes;
+    private List<Hero> listHeroes;
+
+    /*
+        Elementos para a listagem de Heróis favoritos
+     */
+
     private ListView listViewFavHeroes;
-    private HeroesAdapter heroesAdapter;
-    private ArrayList<Hero> listHeroes;
+    private HeroesFavAdapter adapterFavHeroes;
+    private List<Hero> listFavHeroes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_heroes);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        // Carrega as informações dos heróis
-        //listHeroes = new ArrayList<>();
-        listHeroes = getListHeroes();
+        //Toolbar toolbar = findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
+
+        // Popula as lists de Heros
+        populateListHeroes();
 
         // Instancia as listviews e define o adapter
         defineListView();
-
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                /*
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-                        */
-
-                String myHeroes = ApiAnswer.getMyHeroes();
-
-                System.out.println("JSON: \n" + myHeroes);
-
-                List<Hero> a = MyHeroes.build(myHeroes);
-
-                for (Hero task : a) {
-                    System.out.println(task);
-                }
-
-
-            }
-        });
     }
 
     private void defineListView(){
@@ -69,18 +58,19 @@ public class HeroesActivity extends AppCompatActivity {
         listViewHeroes = (ListView) findViewById(R.id.content_heroes_list1);
         listViewFavHeroes = (ListView) findViewById(R.id.content_heroes_list2);
 
-        heroesAdapter = new HeroesAdapter(this, listHeroes, android.R.layout.activity_list_item);
+        adapterHeroes = new HeroesAdapter(this, listHeroes);
+        adapterFavHeroes = new HeroesFavAdapter(this, listFavHeroes);
 
-        listViewHeroes.setAdapter(heroesAdapter);
-        //listViewFavHeroes.setAdapter(heroesAdapter);
+        listViewHeroes.setAdapter(adapterHeroes);
+        listViewFavHeroes.setAdapter(adapterFavHeroes);
 
     }
 
-    private ArrayList<Hero> getListHeroes(){
+    private void populateListHeroes(){
 
-        ArrayList<Hero> l = new ArrayList<>();
+        //List<Hero> l = new ArrayList<>();
 
-        l.add(new Hero("Ricardo", "Aruã", 35.0, "https://doghero-uploads.s3.amazonaws.com/uploads/photo/1433381/sq135_DH_24012018123600937_98895.png", false));
+        //l.add(new Hero("Ricardo", "Aruã", 35.0, "https://doghero-uploads.s3.amazonaws.com/uploads/photo/1433381/sq135_DH_24012018123600937_98895.png", false));
         //l.add(new Hero("Gustavo", "Vila Mariana", 135.0, "https://doghero-uploads.s3.amazonaws.com/uploads/photo/1433381/sq135_DH_24012018123600937_98895.png", false));
         //l.add(new Hero("Talyson", "Pindamonhangaba", 315.0, "https://doghero-uploads.s3.amazonaws.com/uploads/photo/1433381/sq135_DH_24012018123600937_98895.png", false));
         //l.add(new Hero("Roberto", "Aruã", 3522.0, "https://doghero-uploads.s3.amazonaws.com/uploads/photo/1433381/sq135_DH_24012018123600937_98895.png", false));
@@ -88,11 +78,15 @@ public class HeroesActivity extends AppCompatActivity {
         //l.add(new Hero("Alfredo", "Aruã", 35.0, "https://doghero-uploads.s3.amazonaws.com/uploads/photo/1433381/sq135_DH_24012018123600937_98895.png", true));
         //l.add(new Hero("Marcela", "Aruã", 3445.0, "https://doghero-uploads.s3.amazonaws.com/uploads/photo/1433381/sq135_DH_24012018123600937_98895.png", true));
         //l.add(new Hero("Pedro", "Aruã", 325.0, "https://doghero-uploads.s3.amazonaws.com/uploads/photo/1433381/sq135_DH_24012018123600937_98895.png", true));
-        l.add(new Hero("Paulo", "Aruã", 315.0, "https://doghero-uploads.s3.amazonaws.com/uploads/photo/1433381/sq135_DH_24012018123600937_98895.png", true));
-        l.add(new Hero("Carolina", "Aruã", 325.0, "https://doghero-uploads.s3.amazonaws.com/uploads/photo/1433381/sq135_DH_24012018123600937_98895.png", true));
+        //l.add(new Hero("Paulo", "Aruã", 315.0, "https://doghero-uploads.s3.amazonaws.com/uploads/photo/1433381/sq135_DH_24012018123600937_98895.png", true));
+        //l.add(new Hero("Carolina", "Aruã", 325.0, "https://doghero-uploads.s3.amazonaws.com/uploads/photo/1433381/sq135_DH_24012018123600937_98895.png", true));
 
-        return l;
 
+        String myHeroes = ApiAnswer.getMyHeroes();
+        JsonReaderHero jrh = MyHeroes.build(myHeroes);
+
+        listHeroes = jrh.recents;
+        listFavHeroes = jrh.favorites;
     }
 
 }

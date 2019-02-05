@@ -1,5 +1,7 @@
 package br.com.doghero.dhproject;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -8,33 +10,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.doghero.dhproject.Object.Hero;
+import br.com.doghero.dhproject.Object.JsonReaderHero;
 
 public class MyHeroes {
 
     //you can use Gson lib
-    public static List<Hero> build(String json) {
-
-        ArrayList<Hero> myHeroes = new ArrayList<Hero>();
-
-        Type type = new TypeToken<List<Hero>>() {}.getType();
-
+    public static JsonReaderHero build(String json) {
 
         Gson parseGson = new Gson();
-        List<Hero> fromJson = parseGson.fromJson(json, type);
+        Type listType = new TypeToken<ArrayList<Hero>>(){}.getType();
 
-        return fromJson;
+        JsonReaderHero readerHeroJson = parseGson.fromJson(json, JsonReaderHero.class);
 
-        /*
-        {
-            "is_superhero": false,
-            "user": {
-                "first_name": "Gustavo",
-                "image_url": "https://doghero-uploads-dev.s3.amazonaws.com/uploads/photo/433367/sq135_147 6480114177_736191_avatar.jpg"
-            },
-            "address_neighborhood": "Vila Mariana",
-            "price": 45
-         }
-         */
+        return readerHeroJson;
 
     }
 

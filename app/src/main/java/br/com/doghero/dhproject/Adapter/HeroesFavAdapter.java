@@ -3,23 +3,21 @@ package br.com.doghero.dhproject.Adapter;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.view.View.OnClickListener;
 
-
-import java.util.ArrayList;
 import java.util.List;
 
 import br.com.doghero.dhproject.Object.Hero;
 import br.com.doghero.dhproject.R;
 import br.com.doghero.dhproject.images.ImageHelper;
 
-public class HeroesAdapter extends ArrayAdapter<Hero> {
+public class HeroesFavAdapter extends ArrayAdapter<Hero> {
 
     private Context                 mContext		;
     private HeroViewHolder[] 		cardsTag		;
@@ -27,7 +25,7 @@ public class HeroesAdapter extends ArrayAdapter<Hero> {
     private static List<Hero>       listHero		;
     private ImageHelper             imgHelper       ;
 
-    public HeroesAdapter(Context context, List<Hero> listHero_) {
+    public HeroesFavAdapter(Context context, List<Hero> listHero_) {
         super(context, 0, listHero_);
 
         mContext 					= context;
