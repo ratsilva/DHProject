@@ -5,4 +5,9 @@
     <string name="btn_conversar">Conversar</string>
     <string name="lbl_heroes">Heróis com quem hospedei</string>
     <string name="lbl_favheroes">Heróis favoritos</string>
+    <string name="lbl_buscar">Busca</string>
+    <string name="lbl_mensagens">Mensagens</string>
+    <string name="lbl_herois">Heróis</string>
+    <string name="lbl_reservas">Reservas</string>
+    <string name="lbl_perfil">Perfil</string>
 </resources>
