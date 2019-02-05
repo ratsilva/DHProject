@@ -45,10 +45,11 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <Button
+                <ImageButton
                     android:id="@+id/card_heroes_btnfavoritar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:background="@android:color/transparent"
                     android:src="@drawable/icon_like_filled_vector_red"/>
 
                 <TextView

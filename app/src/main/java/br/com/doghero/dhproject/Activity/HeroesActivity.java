@@ -81,6 +81,15 @@ public class HeroesActivity extends AppCompatActivity {
         ArrayList<Hero> l = new ArrayList<>();
 
         l.add(new Hero("Ricardo", "Aruã", 35.0, "https://doghero-uploads.s3.amazonaws.com/uploads/photo/1433381/sq135_DH_24012018123600937_98895.png", false));
+        l.add(new Hero("Gustavo", "Vila Mariana", 135.0, "https://doghero-uploads.s3.amazonaws.com/uploads/photo/1433381/sq135_DH_24012018123600937_98895.png", false));
+        l.add(new Hero("Talyson", "Pindamonhangaba", 315.0, "https://doghero-uploads.s3.amazonaws.com/uploads/photo/1433381/sq135_DH_24012018123600937_98895.png", false));
+        l.add(new Hero("Roberto", "Aruã", 3522.0, "https://doghero-uploads.s3.amazonaws.com/uploads/photo/1433381/sq135_DH_24012018123600937_98895.png", false));
+        l.add(new Hero("Soraia", "Aruã", 353.0, "https://doghero-uploads.s3.amazonaws.com/uploads/photo/1433381/sq135_DH_24012018123600937_98895.png", false));
+        l.add(new Hero("Alfredo", "Aruã", 35.0, "https://doghero-uploads.s3.amazonaws.com/uploads/photo/1433381/sq135_DH_24012018123600937_98895.png", true));
+        l.add(new Hero("Marcela", "Aruã", 3445.0, "https://doghero-uploads.s3.amazonaws.com/uploads/photo/1433381/sq135_DH_24012018123600937_98895.png", true));
+        l.add(new Hero("Pedro", "Aruã", 325.0, "https://doghero-uploads.s3.amazonaws.com/uploads/photo/1433381/sq135_DH_24012018123600937_98895.png", true));
+        l.add(new Hero("Paulo", "Aruã", 315.0, "https://doghero-uploads.s3.amazonaws.com/uploads/photo/1433381/sq135_DH_24012018123600937_98895.png", true));
+        l.add(new Hero("Carolina", "Aruã", 325.0, "https://doghero-uploads.s3.amazonaws.com/uploads/photo/1433381/sq135_DH_24012018123600937_98895.png", true));
 
         return l;
 

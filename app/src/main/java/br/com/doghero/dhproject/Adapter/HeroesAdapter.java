@@ -1,16 +1,16 @@
 package br.com.doghero.dhproject.Adapter;
 
 import android.content.Context;
-import android.media.Image;
-import android.support.annotation.NonNull;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.view.View.OnClickListener;
+
 
 import java.util.ArrayList;
 
@@ -21,51 +21,46 @@ import br.com.doghero.dhproject.images.ImageHelper;
 public class HeroesAdapter extends ArrayAdapter<Hero> {
 
     private Context                 mContext		;
-    //private HeroViewHolder[] 		cardsTag		;
+    private HeroViewHolder[] 		cardsTag		;
     private HeroViewHolder 			cardVH			;
     private static ArrayList<Hero>  listHero		;
     private ImageHelper             imgHelper       ;
 
-    public HeroesAdapter(Context context, ArrayList<Hero> listHero, int resource) {
-        super(context, 0, listHero);
+    public HeroesAdapter(Context context, ArrayList<Hero> listHero_, int resource) {
+        super(context, 0, listHero_);
 
-        //mContext 					= context;
-        //cardsTag 					= new HeroViewHolder[listHero.size()];
-        //this.listHero               = listHero;
-
+        mContext 					= context;
+        cardsTag 					= new HeroViewHolder[listHero_.size()];
+        listHero                    = listHero_;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
         View view = convertView;
-
-        Hero hero = getItem(position);
-
-
-        Log.v("ADAPTER", "Hero nome: " + hero.getFirst_name());
+        Hero hero = listHero.get(position);
 
         if(view!=null) {
-            view = null;
+            if(view.getTag() != cardsTag[position])		view = null;
         }
 
         if(view==null){
 
             cardVH = new HeroViewHolder();
 
-            view = LayoutInflater.from(getContext()).inflate(R.layout.card_heroes, parent, false);
+            view = LayoutInflater.from(mContext).inflate(R.layout.card_heroes, parent, false);
 
             cardVH.userFoto 	    = (ImageView) view.findViewById(R.id.card_heroes_userfoto);
             //cardVH.userSuperHero 	= (ImageView) view.findViewById(R.id.card_heroes_userfoto);
             cardVH.userNome 	    = (TextView) view.findViewById(R.id.card_heroes_usernome);
             cardVH.userBairro 	    = (TextView) view.findViewById(R.id.card_heroes_userbairro);
             cardVH.userPreco 	    = (TextView) view.findViewById(R.id.card_heroes_userpreco);
-            cardVH.btnFavoritar 	= (Button) view.findViewById(R.id.card_heroes_btnfavoritar);
+            cardVH.btnFavoritar 	= (ImageButton) view.findViewById(R.id.card_heroes_btnfavoritar);
             cardVH.btnConversar 	= (Button) view.findViewById(R.id.card_heroes_btnconversar);
             cardVH.btnReservar 	    = (Button) view.findViewById(R.id.card_heroes_btnreservar);
 
-
             view.setTag(cardVH);
+            cardsTag[position] = cardVH;
 
         }
         else cardVH = (HeroViewHolder) view.getTag();
@@ -73,7 +68,21 @@ public class HeroesAdapter extends ArrayAdapter<Hero> {
         cardVH.userNome	    .setText(hero.getFirst_name());
         cardVH.userBairro	.setText(hero.getAddress_neighborhood());
         cardVH.userPreco	.setText("" + hero.getPrice());
-        //imgHelper.loadImage(getContext(), hero.getImage_url(), R.drawable.progress_image, cardVH.userFoto);
+        imgHelper.loadImage(mContext, hero.getImage_url(), R.drawable.progress_image, cardVH.userFoto);
+        if(hero.isIs_superhero()){
+            cardVH.btnFavoritar.setImageResource(R.drawable.icon_like_filled_vector_red);
+        }else{
+            cardVH.btnFavoritar.setImageResource(R.drawable.icon_like_border_vector_gray_battleship);
+        }
+
+        cardVH.btnFavoritar.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+            }
+        });
+
 
         return view;
 
@@ -89,7 +98,7 @@ public class HeroesAdapter extends ArrayAdapter<Hero> {
         TextView    userNome        ;
         TextView    userBairro      ;
         TextView    userPreco       ;
-        Button      btnFavoritar    ;
+        ImageButton btnFavoritar    ;
         Button      btnConversar    ;
         Button      btnReservar     ;
 
