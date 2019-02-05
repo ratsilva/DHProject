@@ -4,9 +4,10 @@
     <solid android:color="#EF3A5D" />
 
     <corners
-        android:bottomLeftRadius="10dp"
-        android:bottomRightRadius="10dp"
-        android:topLeftRadius="10dp"
-        android:topRightRadius="10dp" />
+        android:bottomLeftRadius="@dimen/btn_corner"
+        android:bottomRightRadius="@dimen/btn_corner"
+        android:topLeftRadius="@dimen/btn_corner"
+        android:topRightRadius="@dimen/btn_corner" />
+
 
 </shape>

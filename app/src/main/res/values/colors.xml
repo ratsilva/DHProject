@@ -5,5 +5,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="nomeAnfitriao">#A8000000</color>
     <color name="bairroAnfitriao">#6B000000</color>
+    <color name="precoAnfitriao">#A8000000</color>
     <color name="subtituloHeroi">#6B000000</color>
+    <color name="background_app">#e7e7e7</color>
 </resources>

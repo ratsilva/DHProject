@@ -51,7 +51,7 @@ public class HeroesAdapter extends ArrayAdapter<Hero> {
             view = LayoutInflater.from(mContext).inflate(R.layout.card_heroes, parent, false);
 
             cardVH.userFoto 	    = (ImageView) view.findViewById(R.id.card_heroes_userfoto);
-            //cardVH.userSuperHero 	= (ImageView) view.findViewById(R.id.card_heroes_userfoto);
+            cardVH.userSuperHero 	= (ImageView) view.findViewById(R.id.card_heroes_usersuperhero);
             cardVH.userNome 	    = (TextView) view.findViewById(R.id.card_heroes_usernome);
             cardVH.userBairro 	    = (TextView) view.findViewById(R.id.card_heroes_userbairro);
             cardVH.userPreco 	    = (TextView) view.findViewById(R.id.card_heroes_userpreco);
@@ -67,17 +67,19 @@ public class HeroesAdapter extends ArrayAdapter<Hero> {
 
         cardVH.userNome	    .setText(hero.getFirst_name());
         cardVH.userBairro	.setText(hero.getAddress_neighborhood());
-        cardVH.userPreco	.setText("" + hero.getPrice());
+        cardVH.userPreco	.setText(String.valueOf(hero.getPrice()).replace(".0",""));
         imgHelper.loadImage(mContext, hero.getImage_url(), R.drawable.progress_image, cardVH.userFoto);
+
         if(hero.isIs_superhero()){
-            cardVH.btnFavoritar.setImageResource(R.drawable.icon_like_filled_vector_red);
+            cardVH.userSuperHero.setVisibility(View.VISIBLE);
         }else{
-            cardVH.btnFavoritar.setImageResource(R.drawable.icon_like_border_vector_gray_battleship);
+            cardVH.userSuperHero.setVisibility(View.GONE);
         }
 
         cardVH.btnFavoritar.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+
 
 
             }

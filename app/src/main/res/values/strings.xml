@@ -3,4 +3,6 @@
     <string name="title_activity_heroes">Meus Heróis</string>
     <string name="btn_reservar">Reservar de novo</string>
     <string name="btn_conversar">Conversar</string>
+    <string name="lbl_heroes">Heróis com quem hospedei</string>
+    <string name="lbl_favheroes">Heróis favoritos</string>
 </resources>

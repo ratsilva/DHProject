@@ -4,108 +4,165 @@
     android:layout_height="wrap_content"
     android:orientation="vertical" >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="18dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="5dp"
-            android:orientation="horizontal" >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="15dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="10dp">
 
-            <ImageView
-                android:id="@+id/card_heroes_userfoto"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:src="@drawable/ic_launcher_background"/>
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_heroes_userfoto"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/ic_launcher_background"/>
+
+        <ImageView
+            android:id="@+id/card_heroes_usersuperhero"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignRight="@+id/card_heroes_userfoto"
+            android:layout_alignBottom="@id/card_heroes_userfoto"
+            android:src="@drawable/host_list_icon_badge" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:layout_toRightOf="@+id/card_heroes_userfoto"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/card_heroes_usernome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:textColor="@color/nomeAnfitriao"
+                android:text="Alex"/>
+
+            <TextView
+                android:id="@+id/card_heroes_userbairro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="normal"
+                android:textSize="14dp"
+                android:textColor="@color/bairroAnfitriao"
+                android:text="Vila Mariana"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
-
-                <TextView
-                    android:id="@+id/card_heroes_usernome"
-                    android:layout_width="wrap_content"
-                    android:layout_height="18dp"
-                    android:textStyle="bold"
-                    android:textColor="@color/nomeAnfitriao"
-                    android:text="Alex"/>
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/rating_star"
+                    android:scaleType="fitCenter"/>
 
                 <TextView
-                    android:id="@+id/card_heroes_userbairro"
                     android:layout_width="wrap_content"
-                    android:layout_height="14dp"
-                    android:textStyle="normal"
-                    android:textColor="@color/bairroAnfitriao"
-                    android:text="Vila Mariana"/>
+                    android:layout_height="wrap_content"
+                    android:textSize="12dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_gravity="center_vertical"
+                    android:text="(415)"/>
 
 
             </LinearLayout>
 
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentRight="true">
+
+            <ImageButton
+                android:id="@+id/card_heroes_btnfavoritar"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:scaleType="fitCenter"
+                android:layout_gravity="right"
+                android:visibility="visible"
+                android:layout_marginBottom="5dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/icon_like_border_vector_gray_battleship"/>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="right"
-                android:orientation="vertical">
+                android:layout_gravity="right"
+                android:orientation="horizontal">
 
-                <ImageButton
-                    android:id="@+id/card_heroes_btnfavoritar"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:background="@android:color/transparent"
-                    android:src="@drawable/icon_like_filled_vector_red"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:textSize="16dp"
+                    android:text="R$"/>
 
                 <TextView
                     android:id="@+id/card_heroes_userpreco"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/precoAnfitriao"
                     android:text="108"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="por noite"/>
-
 
             </LinearLayout>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:textSize="12dp"
+                android:text="por noite"/>
+
+
         </LinearLayout>
 
-        <LinearLayout
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/card_heroes_btnconversar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:background="@drawable/shape_btnconversar"
+            android:textColor="@color/nomeAnfitriao"
+            android:textAllCaps="false"
+            android:text="@string/btn_conversar"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="2.5dp"/>
 
-            <Button
-                android:id="@+id/card_heroes_btnconversar"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:textSize="14dp"
-                android:textStyle="bold"
-                android:background="@drawable/shape_btnconversar"
-                android:textColor="@color/nomeAnfitriao"
-                android:textAllCaps="false"
-                android:text="@string/btn_conversar"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="2.5dp"/>
+        <Button
+            android:id="@+id/card_heroes_btnreservar"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:background="@drawable/shape_btnreservar"
+            android:textColor="@android:color/white"
+            android:textAllCaps="false"
+            android:text="@string/btn_reservar"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="2.5dp"/>
 
-            <Button
-                android:id="@+id/card_heroes_btnreservar"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:textSize="14dp"
-                android:textStyle="bold"
-                android:background="@drawable/shape_btnreservar"
-                android:textColor="@android:color/white"
-                android:textAllCaps="false"
-                android:text="@string/btn_reservar"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="2.5dp"/>
-
-        </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>

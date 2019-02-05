@@ -55,4 +55,6 @@ public class Hero {
     public void setIs_superhero(boolean is_superhero) {
         this.is_superhero = is_superhero;
     }
+
+
 }
