@@ -7,7 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.view.View.MeasureSpec;
+import android.view.ViewGroup;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,23 +68,33 @@ public class HeroesActivity extends AppCompatActivity {
         listViewHeroes.setAdapter(adapterHeroes);
         listViewFavHeroes.setAdapter(adapterFavHeroes);
 
+        setDynamicHeight(listViewHeroes);
+        setDynamicHeight(listViewFavHeroes);
+
+    }
+
+    public static void setDynamicHeight(ListView listView) {
+        ListAdapter adapter = listView.getAdapter();
+        //check adapter if null
+        if (adapter == null) {
+            return;
+        }
+        int height = 0;
+        int desiredWidth = MeasureSpec.makeMeasureSpec(listView.getWidth(), MeasureSpec.UNSPECIFIED);
+
+        int count = adapter.getCount();
+        View listItem = adapter.getView(0, null, listView);
+        listItem.measure(desiredWidth, MeasureSpec.UNSPECIFIED);
+        height = count * listItem.getMeasuredHeight();
+
+        ViewGroup.LayoutParams layoutParams = listView.getLayoutParams();
+        layoutParams.height = height;
+
+        listView.setLayoutParams(layoutParams);
+        listView.requestLayout();
     }
 
     private void populateListHeroes(){
-
-        //List<Hero> l = new ArrayList<>();
-
-        //l.add(new Hero("Ricardo", "Aruã", 35.0, "https://doghero-uploads.s3.amazonaws.com/uploads/photo/1433381/sq135_DH_24012018123600937_98895.png", false));
-        //l.add(new Hero("Gustavo", "Vila Mariana", 135.0, "https://doghero-uploads.s3.amazonaws.com/uploads/photo/1433381/sq135_DH_24012018123600937_98895.png", false));
-        //l.add(new Hero("Talyson", "Pindamonhangaba", 315.0, "https://doghero-uploads.s3.amazonaws.com/uploads/photo/1433381/sq135_DH_24012018123600937_98895.png", false));
-        //l.add(new Hero("Roberto", "Aruã", 3522.0, "https://doghero-uploads.s3.amazonaws.com/uploads/photo/1433381/sq135_DH_24012018123600937_98895.png", false));
-        //l.add(new Hero("Soraia", "Aruã", 353.0, "https://doghero-uploads.s3.amazonaws.com/uploads/photo/1433381/sq135_DH_24012018123600937_98895.png", false));
-        //l.add(new Hero("Alfredo", "Aruã", 35.0, "https://doghero-uploads.s3.amazonaws.com/uploads/photo/1433381/sq135_DH_24012018123600937_98895.png", true));
-        //l.add(new Hero("Marcela", "Aruã", 3445.0, "https://doghero-uploads.s3.amazonaws.com/uploads/photo/1433381/sq135_DH_24012018123600937_98895.png", true));
-        //l.add(new Hero("Pedro", "Aruã", 325.0, "https://doghero-uploads.s3.amazonaws.com/uploads/photo/1433381/sq135_DH_24012018123600937_98895.png", true));
-        //l.add(new Hero("Paulo", "Aruã", 315.0, "https://doghero-uploads.s3.amazonaws.com/uploads/photo/1433381/sq135_DH_24012018123600937_98895.png", true));
-        //l.add(new Hero("Carolina", "Aruã", 325.0, "https://doghero-uploads.s3.amazonaws.com/uploads/photo/1433381/sq135_DH_24012018123600937_98895.png", true));
-
 
         String myHeroes = ApiAnswer.getMyHeroes();
         JsonReaderHero jrh = MyHeroes.build(myHeroes);

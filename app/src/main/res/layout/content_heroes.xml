@@ -11,6 +11,10 @@
     tools:context=".Activity.HeroesActivity"
     tools:showIn="@layout/activity_heroes" >
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,7 +36,6 @@
             android:id="@+id/content_heroes_list1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="10dp"
             android:divider="@null"
             android:background="@android:color/white"/>
 
@@ -51,10 +54,13 @@
             android:id="@+id/content_heroes_list2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:background="@android:color/white"
             android:divider="@null" />
 
     </LinearLayout>
+
+
+    </ScrollView>
+
 
 </RelativeLayout>
