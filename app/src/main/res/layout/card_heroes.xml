@@ -15,8 +15,8 @@
 
             <ImageView
                 android:id="@+id/card_heroes_userfoto"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
                 android:src="@drawable/ic_launcher_background"/>
 
             <LinearLayout
@@ -28,13 +28,17 @@
                 <TextView
                     android:id="@+id/card_heroes_usernome"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="18dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/nomeAnfitriao"
                     android:text="Alex"/>
 
                 <TextView
                     android:id="@+id/card_heroes_userbairro"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="14dp"
+                    android:textStyle="normal"
+                    android:textColor="@color/bairroAnfitriao"
                     android:text="Vila Mariana"/>
 
 
@@ -43,6 +47,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:gravity="right"
                 android:orientation="vertical">
 
                 <ImageButton
@@ -56,7 +61,7 @@
                     android:id="@+id/card_heroes_userpreco"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="R$ 108"/>
+                    android:text="108"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -76,16 +81,30 @@
             <Button
                 android:id="@+id/card_heroes_btnconversar"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="40dp"
                 android:layout_weight="1"
-                android:text="Conversar"/>
+                android:textSize="14dp"
+                android:textStyle="bold"
+                android:background="@drawable/shape_btnconversar"
+                android:textColor="@color/nomeAnfitriao"
+                android:textAllCaps="false"
+                android:text="@string/btn_conversar"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="2.5dp"/>
 
             <Button
                 android:id="@+id/card_heroes_btnreservar"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="40dp"
                 android:layout_weight="1"
-                android:text="Reservar de novo"/>
+                android:textSize="14dp"
+                android:textStyle="bold"
+                android:background="@drawable/shape_btnreservar"
+                android:textColor="@android:color/white"
+                android:textAllCaps="false"
+                android:text="@string/btn_reservar"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="2.5dp"/>
 
         </LinearLayout>
 

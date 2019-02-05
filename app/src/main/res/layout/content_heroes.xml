@@ -23,6 +23,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Heróis com quem hospedei"
+            android:textStyle="bold"
+            android:textColor="@color/subtituloHeroi"
             android:textSize="14dp"/>
 
 
@@ -38,6 +40,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Heróis favoritos"
+            android:textStyle="bold"
+            android:textColor="@color/subtituloHeroi"
             android:textSize="14dp"/>
 
         <ListView
