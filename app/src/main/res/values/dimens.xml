@@ -5,7 +5,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     
-    <dimen name="img_footer_width">48dp</dimen>
-    <dimen name="img_footer_heigth">48dp</dimen>
+    <dimen name="img_footer_width">42dp</dimen>
+    <dimen name="img_footer_heigth">42dp</dimen>
     <dimen name="lbl_footer_size">12dp</dimen>
 </resources>
