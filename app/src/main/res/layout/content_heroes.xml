@@ -11,56 +11,21 @@
     tools:context=".Activity.HeroesActivity"
     tools:showIn="@layout/activity_heroes" >
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/lbl_heroes"
-            android:paddingLeft="20dp"
-            android:paddingTop="20dp"
-            android:layout_marginBottom="12dp"
-            android:textStyle="bold"
-            android:textColor="@color/subtituloHeroi"
-            android:textSize="14dp"/>
-
-
-        <ListView
-            android:id="@+id/content_heroes_list1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:divider="@null"
-            android:background="@android:color/white"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/lbl_favheroes"
-            android:paddingLeft="20dp"
-            android:paddingTop="20dp"
-            android:layout_marginBottom="15dp"
-            android:textStyle="bold"
-            android:textColor="@color/subtituloHeroi"
-            android:textSize="14dp"/>
-
-        <ListView
-            android:id="@+id/content_heroes_list2"
+        <ExpandableListView
+            android:id="@+id/content_heroes_explist"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/white"
-            android:divider="@null" />
+            android:divider="@null"
+            android:groupIndicator="@null"
+            android:childDivider="@null"/>
 
     </LinearLayout>
-
-
-    </ScrollView>
 
 
 </RelativeLayout>

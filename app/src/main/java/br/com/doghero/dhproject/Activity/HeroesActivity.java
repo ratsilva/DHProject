@@ -1,12 +1,10 @@
 package br.com.doghero.dhproject.Activity;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
+import android.widget.ExpandableListView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.view.View.MeasureSpec;
@@ -14,9 +12,10 @@ import android.view.ViewGroup;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
-import br.com.doghero.dhproject.Adapter.HeroesAdapter;
+import br.com.doghero.dhproject.Adapter.HeroesAdapterExpandable;
 import br.com.doghero.dhproject.Adapter.HeroesFavAdapter;
 import br.com.doghero.dhproject.MyHeroes;
 import br.com.doghero.dhproject.Object.Hero;
@@ -30,25 +29,33 @@ public class HeroesActivity extends AppCompatActivity {
         Elementos para a listagem de Heróis com quem hospedei
      */
 
-    private ListView listViewHeroes;
-    private HeroesAdapter adapterHeroes;
-    private List<Hero> listHeroes;
+    //private ListView listViewHeroes;
+    //private HeroesAdapter adapterHeroes;
+    //private List<Hero> listHeroes;
 
     /*
         Elementos para a listagem de Heróis favoritos
      */
 
-    private ListView listViewFavHeroes;
-    private HeroesFavAdapter adapterFavHeroes;
-    private List<Hero> listFavHeroes;
+    //private ListView listViewFavHeroes;
+    //private HeroesFavAdapter adapterFavHeroes;
+    //private List<Hero> listFavHeroes;
+
+    /*
+        Elementos para a expandable listview
+     */
+
+    ExpandableListView                  listViewHeroes;
+    HeroesAdapterExpandable             adapterHeroes;
+    private List<String>                listDataHeader;
+    private HashMap<String, List<Hero>> listDataChild;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_heroes);
-
-        //Toolbar toolbar = findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         // Popula as lists de Heros
         populateListHeroes();
@@ -59,17 +66,23 @@ public class HeroesActivity extends AppCompatActivity {
 
     private void defineListView(){
 
-        listViewHeroes = (ListView) findViewById(R.id.content_heroes_list1);
-        listViewFavHeroes = (ListView) findViewById(R.id.content_heroes_list2);
+        //listViewHeroes = (ListView) findViewById(R.id.content_heroes_list1);
+        //listViewFavHeroes = (ListView) findViewById(R.id.content_heroes_list2);
 
-        adapterHeroes = new HeroesAdapter(this, listHeroes);
-        adapterFavHeroes = new HeroesFavAdapter(this, listFavHeroes);
+        //adapterHeroes = new HeroesAdapter(this, listHeroes);
+        //adapterFavHeroes = new HeroesFavAdapter(this, listFavHeroes);
+
+        //listViewHeroes.setAdapter(adapterHeroes);
+        //listViewFavHeroes.setAdapter(adapterFavHeroes);
+
+        //setDynamicHeight(listViewHeroes);
+        //setDynamicHeight(listViewFavHeroes);
+
+        listViewHeroes = (ExpandableListView) findViewById(R.id.content_heroes_explist);
+
+        adapterHeroes = new HeroesAdapterExpandable(this, listDataHeader, listDataChild);
 
         listViewHeroes.setAdapter(adapterHeroes);
-        listViewFavHeroes.setAdapter(adapterFavHeroes);
-
-        setDynamicHeight(listViewHeroes);
-        setDynamicHeight(listViewFavHeroes);
 
     }
 
@@ -99,8 +112,18 @@ public class HeroesActivity extends AppCompatActivity {
         String myHeroes = ApiAnswer.getMyHeroes();
         JsonReaderHero jrh = MyHeroes.build(myHeroes);
 
-        listHeroes = jrh.recents;
-        listFavHeroes = jrh.favorites;
+        //listHeroes = jrh.recents;
+        //listFavHeroes = jrh.favorites;
+
+        listDataHeader = new ArrayList<String>();
+        listDataChild = new HashMap<String, List<Hero>>();
+
+        listDataHeader.add(getResources().getString(R.string.lbl_heroes));
+        listDataHeader.add(getResources().getString(R.string.lbl_favheroes));
+
+        listDataChild.put(listDataHeader.get(0), jrh.recents);
+        listDataChild.put(listDataHeader.get(1), jrh.favorites);
+
     }
 
 }
