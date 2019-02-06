@@ -8,4 +8,5 @@
     <color name="precoAnfitriao">#A8000000</color>
     <color name="subtituloHeroi">#6B000000</color>
     <color name="background_app">#e7e7e7</color>
+    <color name="heroes_title">#A8000000</color>
 </resources>

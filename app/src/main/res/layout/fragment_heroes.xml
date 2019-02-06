@@ -8,7 +8,12 @@
     android:orientation="vertical"
     android:background="@color/background_app"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".Activity.HeroesActivity" >
+    tools:context=".Activity.MainActivity"
+    tools:showIn="@layout/main_activity" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -53,5 +58,7 @@
             android:divider="@null" />
 
     </LinearLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

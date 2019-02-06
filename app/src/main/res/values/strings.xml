@@ -10,4 +10,11 @@
     <string name="lbl_herois">Heróis</string>
     <string name="lbl_reservas">Reservas</string>
     <string name="lbl_perfil">Perfil</string>
+    <string name="title_activity_main2">Main2Activity</string>
+
+    <string name="lbl_bottom_busca">Busca</string>
+    <string name="lbl_bottom_mensagens">Mensagens</string>
+    <string name="lbl_bottom_herois">Heróis</string>
+    <string name="lbl_bottom_reservas">Reservas</string>
+    <string name="lbl_bottom_perfil">Perfil</string>
 </resources>
