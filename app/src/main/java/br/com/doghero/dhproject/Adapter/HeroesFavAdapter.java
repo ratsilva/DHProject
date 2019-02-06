@@ -33,75 +33,82 @@ public class HeroesFavAdapter extends ArrayAdapter<Hero> {
         listHero                    = listHero_;
     }
 
+
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
 
         View view = convertView;
-        Hero hero = listHero.get(position);
 
-        if(view!=null) {
-            if(view.getTag() != cardsTag[position])		view = null;
-        }
+        if(!isEmpty()){
 
-        if(view==null){
+            Hero hero = listHero.get(position);
 
-            cardVH = new HeroViewHolder();
+            if(view!=null) {
+                if(view.getTag() != cardsTag[position])		view = null;
+            }
 
-            view = LayoutInflater.from(mContext).inflate(R.layout.card_heroes, parent, false);
+            if(view==null){
 
-            cardVH.userFoto 	    = (ImageView) view.findViewById(R.id.card_heroes_userfoto);
-            cardVH.userSuperHero 	= (ImageView) view.findViewById(R.id.card_heroes_usersuperhero);
-            cardVH.userNome 	    = (TextView) view.findViewById(R.id.card_heroes_usernome);
-            cardVH.userBairro 	    = (TextView) view.findViewById(R.id.card_heroes_userbairro);
-            cardVH.userPreco 	    = (TextView) view.findViewById(R.id.card_heroes_userpreco);
-            cardVH.btnFavoritar 	= (ImageButton) view.findViewById(R.id.card_heroes_btnfavoritar);
-            cardVH.btnConversar 	= (Button) view.findViewById(R.id.card_heroes_btnconversar);
-            cardVH.btnReservar 	    = (Button) view.findViewById(R.id.card_heroes_btnreservar);
+                cardVH = new HeroViewHolder();
 
-            view.setTag(cardVH);
-            cardsTag[position] = cardVH;
+                view = LayoutInflater.from(mContext).inflate(R.layout.card_heroes, parent, false);
 
-        }
-        else cardVH = (HeroViewHolder) view.getTag();
+                cardVH.userFoto 	    = (ImageView) view.findViewById(R.id.card_heroes_userfoto);
+                cardVH.userSuperHero 	= (ImageView) view.findViewById(R.id.card_heroes_usersuperhero);
+                cardVH.userNome 	    = (TextView) view.findViewById(R.id.card_heroes_usernome);
+                cardVH.userBairro 	    = (TextView) view.findViewById(R.id.card_heroes_userbairro);
+                cardVH.userPreco 	    = (TextView) view.findViewById(R.id.card_heroes_userpreco);
+                cardVH.btnFavoritar 	= (ImageButton) view.findViewById(R.id.card_heroes_btnfavoritar);
+                cardVH.btnConversar 	= (Button) view.findViewById(R.id.card_heroes_btnconversar);
+                cardVH.btnReservar 	    = (Button) view.findViewById(R.id.card_heroes_btnreservar);
 
-        cardVH.userNome	    .setText(hero.getUser().getFirst_name());
-        cardVH.userBairro	.setText(hero.getAddress_neighborhood());
-        cardVH.userPreco	.setText(String.valueOf(hero.getPrice()).replace(".0",""));
-        cardVH.btnFavoritar .setTag(R.drawable.icon_like_border_vector_gray_battleship);
-        imgHelper.loadImage(mContext, hero.getUser().getImage_url(), R.drawable.progress_image, cardVH.userFoto);
-
-        if(hero.isIs_superhero()){
-            cardVH.userSuperHero.setVisibility(View.VISIBLE);
-        }else{
-            cardVH.userSuperHero.setVisibility(View.GONE);
-        }
-
-        cardVH.btnFavoritar.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            HeroViewHolder vv = cardsTag[position];
-
-            Integer resource = (Integer) vv.btnFavoritar.getTag();
-
-                if(resource == R.drawable.icon_like_border_vector_gray_battleship){
-                    vv.btnFavoritar.setImageResource(R.drawable.icon_like_filled_vector_red);
-                    vv.btnFavoritar.setTag(R.drawable.icon_like_filled_vector_red);
-                }else {
-                    vv.btnFavoritar.setImageResource(R.drawable.icon_like_border_vector_gray_battleship);
-                    vv.btnFavoritar.setTag(R.drawable.icon_like_border_vector_gray_battleship);
-                }
-
-                cardsTag[position] = vv;
+                view.setTag(cardVH);
+                cardsTag[position] = cardVH;
 
             }
-        });
+            else cardVH = (HeroViewHolder) view.getTag();
+
+            cardVH.userNome	    .setText(hero.getUser().getFirst_name());
+            cardVH.userBairro	.setText(hero.getAddress_neighborhood());
+            cardVH.userPreco	.setText(String.valueOf(hero.getPrice()).replace(".0",""));
+            cardVH.btnFavoritar .setTag(R.drawable.icon_like_border_vector_gray_battleship);
+            imgHelper.loadImage(mContext, hero.getUser().getImage_url(), R.drawable.progress_image, cardVH.userFoto);
+
+            if(hero.isIs_superhero()){
+                cardVH.userSuperHero.setVisibility(View.VISIBLE);
+            }else{
+                cardVH.userSuperHero.setVisibility(View.GONE);
+            }
+
+            cardVH.btnFavoritar.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    HeroViewHolder vv = cardsTag[position];
+
+                    Integer resource = (Integer) vv.btnFavoritar.getTag();
+
+                    if(resource == R.drawable.icon_like_border_vector_gray_battleship){
+                        vv.btnFavoritar.setImageResource(R.drawable.icon_like_filled_vector_red);
+                        vv.btnFavoritar.setTag(R.drawable.icon_like_filled_vector_red);
+                    }else {
+                        vv.btnFavoritar.setImageResource(R.drawable.icon_like_border_vector_gray_battleship);
+                        vv.btnFavoritar.setTag(R.drawable.icon_like_border_vector_gray_battleship);
+                    }
+
+                    cardsTag[position] = vv;
+
+                }
+            });
+
+
+        }
+
 
 
         return view;
 
     }
-
 
     static class HeroViewHolder	{
 

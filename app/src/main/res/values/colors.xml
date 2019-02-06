@@ -9,4 +9,7 @@
     <color name="subtituloHeroi">#6B000000</color>
     <color name="background_app">#e7e7e7</color>
     <color name="heroes_title">#A8000000</color>
+
+    <color name="btn_reservar_back">#EF3A5D</color>
+    <color name="btn_conversar_border">#1F000000</color>
 </resources>

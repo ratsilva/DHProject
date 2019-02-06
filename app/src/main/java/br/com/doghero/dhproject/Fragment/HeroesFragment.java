@@ -39,34 +39,43 @@ public class HeroesFragment extends Fragment {
     private HeroesFavAdapter adapterFavHeroes;
     private List<Hero> listFavHeroes;
 
+    /*
+        Elementos auxiliares de execução
+     */
+
     private View    rootView;
     private Context ctx;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        // Define o fragment que será visualizado
         rootView = inflater.inflate(R.layout.fragment_heroes, container, false);
 
         // Popula as lists de Heros
         populateListHeroes();
 
-        // Instancia as listviews e define o adapter
+        // Instancia as listviews e define os adapters
         defineListView();
-
 
         return rootView;
     }
 
     private void defineListView(){
 
+        // Instancia as listviews
         listViewHeroes = (ListView) rootView.findViewById(R.id.content_heroes_list1);
         listViewFavHeroes = (ListView) rootView.findViewById(R.id.content_heroes_list2);
 
+        // Instancia os adapters
         adapterHeroes = new HeroesAdapter(MainActivity.ctx, listHeroes);
         adapterFavHeroes = new HeroesFavAdapter(MainActivity.ctx, listFavHeroes);
 
+        // Associa as listviews com seus respectivos adapters
         listViewHeroes.setAdapter(adapterHeroes);
         listViewFavHeroes.setAdapter(adapterFavHeroes);
 
+        // Define dinamicamente a altura das listviews
+        // Isso é usado para melhorar a navegação do usuário, umas vez que temos 2 listviews dentro de 1 scrollview
         setDynamicHeight(listViewHeroes);
         setDynamicHeight(listViewFavHeroes);
 
@@ -74,15 +83,20 @@ public class HeroesFragment extends Fragment {
 
     public static void setDynamicHeight(ListView listView) {
         ListAdapter adapter = listView.getAdapter();
-        //check adapter if null
+
         if (adapter == null) {
             return;
         }
+
         int height = 0;
         int desiredWidth = MeasureSpec.makeMeasureSpec(listView.getWidth(), MeasureSpec.UNSPECIFIED);
-
         int count = adapter.getCount();
         View listItem = adapter.getView(0, null, listView);
+
+        if (listItem == null) {
+            return;
+        }
+
         listItem.measure(desiredWidth, MeasureSpec.UNSPECIFIED);
         height = count * listItem.getMeasuredHeight();
 
@@ -95,9 +109,13 @@ public class HeroesFragment extends Fragment {
 
     private void populateListHeroes(){
 
+        // Leitura da API de Herois
         String myHeroes = ApiAnswer.getMyHeroes();
+
+        // Utilização da biblioteca GSON para deserialize das informações
         JsonReaderHero jrh = MyHeroes.build(myHeroes);
 
+        // Aramzena informações nas listas
         listHeroes = jrh.recents;
         listFavHeroes = jrh.favorites;
 

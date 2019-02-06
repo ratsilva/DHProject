@@ -7,5 +7,5 @@
     
     <dimen name="img_footer_width">42dp</dimen>
     <dimen name="img_footer_heigth">42dp</dimen>
-    <dimen name="lbl_footer_size">12dp</dimen>
+    <dimen name="lbl_footer_size">12sp</dimen>
 </resources>
