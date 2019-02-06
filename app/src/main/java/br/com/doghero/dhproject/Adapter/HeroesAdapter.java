@@ -69,7 +69,8 @@ public class HeroesAdapter extends ArrayAdapter<Hero> {
             cardVH.userNome	    .setText(hero.getUser().getFirst_name());
             cardVH.userBairro	.setText(hero.getAddress_neighborhood());
             cardVH.userPreco	.setText(String.valueOf(hero.getPrice()).replace(".0",""));
-            cardVH.btnFavoritar .setTag(R.drawable.icon_like_border_vector_gray_battleship);
+            cardVH.btnFavoritar.setVisibility(View.GONE);
+
             imgHelper.loadImage(mContext, hero.getUser().getImage_url(), R.drawable.progress_image, cardVH.userFoto);
 
             if(hero.isIs_superhero()){
@@ -77,26 +78,6 @@ public class HeroesAdapter extends ArrayAdapter<Hero> {
             }else{
                 cardVH.userSuperHero.setVisibility(View.GONE);
             }
-
-            cardVH.btnFavoritar.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    HeroViewHolder vv = cardsTag[position];
-
-                    Integer resource = (Integer) vv.btnFavoritar.getTag();
-
-                    if(resource == R.drawable.icon_like_border_vector_gray_battleship){
-                        vv.btnFavoritar.setImageResource(R.drawable.icon_like_filled_vector_red);
-                        vv.btnFavoritar.setTag(R.drawable.icon_like_filled_vector_red);
-                    }else {
-                        vv.btnFavoritar.setImageResource(R.drawable.icon_like_border_vector_gray_battleship);
-                        vv.btnFavoritar.setTag(R.drawable.icon_like_border_vector_gray_battleship);
-                    }
-
-                    cardsTag[position] = vv;
-                }
-            });
 
         }
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Dog Hero Project</string>
+    <string name="app_name">DogHero</string>
     <string name="title_activity_heroes">Meus heróis</string>
     <string name="btn_reservar">Reservar de novo</string>
     <string name="btn_conversar">Conversar</string>
